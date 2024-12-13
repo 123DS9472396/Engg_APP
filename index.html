@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Engineering App by Dipesh Sharma</title>
+    <style>
+        * {
+            font-size: 40px;
+            font-family: Calibri, Cambria, Arial;
+        }
+        body {
+            background-color: lightgreen;
+        }
+        select {
+            font-size: 30px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h1>Engineering App</h1>
+        <form onsubmit="show(); return false;">
+            <label>Enter Your Name</label>
+            <br/>
+            <input type="text" id="name" placeholder="enter your name" />
+            <br/><br/>
+            <label>Select Engineering Year</label>
+            <br/>
+            <select id="year">
+                <option value="" selected disabled>Select Year</option>
+                <option value="FE">FE</option>
+                <option value="SE">SE</option>
+                <option value="TE">TE</option>
+                <option value="BE">BE</option>
+            </select>
+            <br/><br/>
+            <input type="submit" />
+        </form>
+        <h2 id="msg"></h2>
+    </center>
+
+    <script>
+        function show() {
+            let name = document.getElementById("name");
+            let year = document.getElementById("year");
+            let msg = document.getElementById("msg");
+
+            if (name.value === "") {
+                alert("Name cannot be empty");
+                msg.innerHTML = "";
+                name.focus();
+                return;
+            }
+
+            if (name.value.trim() === "") {
+                alert("Name cannot be blank spaces");
+                name.value = "";
+                msg.innerHTML = "";
+                name.focus();
+                return;
+            }
+
+            if (!name.value.match(/^[A-Za-z ]+$/)) {
+                alert("Name should contain only alphabets");
+                name.value = "";
+                msg.innerHTML = "";
+                name.focus();
+                return;
+            }
+
+            if (year.value === "") {
+                alert("Please select your engineering year");
+                msg.innerHTML = "";
+                year.focus();
+                return;
+            }
+
+            let ans = "Name: " + name.value + ", Year: " + year.value;
+            msg.innerHTML = ans;
+        }
+    </script>
+</body>
+</html>
